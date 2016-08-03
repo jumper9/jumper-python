@@ -1,0 +1,3 @@
+c = { 
+    "sendErrorHTMLCodes" : True
+}

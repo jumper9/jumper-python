@@ -6,6 +6,7 @@ import json
 baseJson = { "swagger" :"2.0" }
 baseJson.update({"info" : { "description": "", "version": "16.0.1", "title": "jumper-python"}})
 baseJson.update({"host":"", "basePath":"", "schemes":"", "paths":{}, "definitions": {}})
+baseJson.update({"responses":{ "200": { "description": "OK" }}})
 allPaths = {}
 
 
@@ -114,8 +115,7 @@ def testService():
 #                      "multipart/form-data"
 #                  ],
 #                  "produces": [
-#                      "application/json"
-#
+#                      "application/json"#
 #                  ],
 #                  "parameters" : [
 #                                   { "name" : "_api_key", "in" : "formData", "description": "Token de auntentificacion para los servicios", "type": "string" },
@@ -124,10 +124,43 @@ def testService():
 #                                   { "name" : "extra_fields", "in" : "formData", "description": "String de datos variables con formato de objeto JSON que se adjuntan al CSV", "type": "string" }
 #                                 ],
 #                          "responses": {
-#                              "200": { "description": "mediaHash = XxXxXx" },
 #                              "400": { "description": "Invalid token<br>Invalid media_product" },
 #                              "500": { "description": "El contenido multimedia no es aceptado Ext:{extension}(jpeg, jpg, png, gif,mp3,wav,wma,avi,mpeg,mp4,3gp)<br>El tamano del contenido no debe superar los 50MB<br>No se pudo subir el contenido multimedia, intente nuevamente"}
 #                          } }
 #
   pass 
   
+def res():
+# { "summary":"Executes a SQL script and returns a single string value" }  
+  pass
+
+def test1():  
+#  j.setError(400, "Codigo error A")
+
+#  j.setError(401, "Codigo error 1")
+ # j.setError(402, "Codigo error 3",3)
+  j.setResponse(j.dbFullRes("select date_format(now(), '%Y-%m-%d %H:%i:%s') union select 1 union select 2 union select 3", {"p2":"1"}))
+
+
+def db():
+  # Connect to the database.
+  import pymysql
+  conn = pymysql.connect(
+      db=server.db,
+      user=server.user,
+      passwd=server.password,
+      host=server.host,
+      autocommit=True)
+
+  c = conn.cursor()
+
+  # Insert some example data.
+  c.execute("INSERT INTO numbers VALUES (1, 'One!')")
+  c.execute("INSERT INTO numbers VALUES (2, 'Two!')")
+  c.execute("INSERT INTO numbers VALUES (3, 'Three!')")
+  #conn.commit()
+
+  # Print the contents of the database.
+  c.execute("SHOW TABLES")
+  print([(r[0]) for r in c.fetchall()])
+

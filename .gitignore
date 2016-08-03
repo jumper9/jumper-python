@@ -51,3 +51,5 @@ docs/_build/
 
 *.sublime-project
 *.sublime-workspace
+
+app/public/server.py

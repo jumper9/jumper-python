@@ -3,15 +3,17 @@
 # enable debugging
 import cgitb
 cgitb.enable(display=1)
-print("Content-Type: application/json;charset=utf-8") 
-print()
+
 
 import sys
 import os
 import os.path
+import j
+
+## DB ##
+j.dbConnect()
 
 ## ARGUMENTS ##
-import j
 j.setParams()
 ## ARGUMENTS END ##
 
@@ -41,7 +43,7 @@ if(os.path.isfile("../"+_pkg+"/services/"+_obj+".py")):
     m = __import__ (_obj)
     func = getattr(m, _met)
     func()
-    
+    j.output()
 
   #except AttributeError:
   #  print("OBJECT FOUND:" + _pkg + "/" + _obj)

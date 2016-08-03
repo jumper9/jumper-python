@@ -141,26 +141,3 @@ def test1():
  # j.setError(402, "Codigo error 3",3)
   j.setResponse(j.dbFullRes("select date_format(now(), '%Y-%m-%d %H:%i:%s') union select 1 union select 2 union select 3", {"p2":"1"}))
 
-
-def db():
-  # Connect to the database.
-  import pymysql
-  conn = pymysql.connect(
-      db=server.db,
-      user=server.user,
-      passwd=server.password,
-      host=server.host,
-      autocommit=True)
-
-  c = conn.cursor()
-
-  # Insert some example data.
-  c.execute("INSERT INTO numbers VALUES (1, 'One!')")
-  c.execute("INSERT INTO numbers VALUES (2, 'Two!')")
-  c.execute("INSERT INTO numbers VALUES (3, 'Three!')")
-  #conn.commit()
-
-  # Print the contents of the database.
-  c.execute("SHOW TABLES")
-  print([(r[0]) for r in c.fetchall()])
-

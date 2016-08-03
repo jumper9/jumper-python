@@ -1,6 +1,7 @@
 import pymysql
 import sys
 import j
+import server
 
 debugOn = False
 conn = None
@@ -22,6 +23,7 @@ def sqlDebug(pDebug = True):
 
 
 def res(sql, queryParams = {}):
+
   sql = sqlReplace(sql, queryParams)
   global c
   out = ""
@@ -82,7 +84,7 @@ def query(sql):
 
 
 def connect():
-  global conn, c
+  global conn, c, server
   try: 
     conn = pymysql.connect(
       db=server.db,

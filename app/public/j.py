@@ -5,6 +5,7 @@ import os
 sys.path.append("../jumper/lib")
 import jumperDb
 import config
+import server
 
 params = {}
 errors = []

@@ -138,6 +138,6 @@ def test1():
 #  j.setError(400, "Codigo error A")
 
 #  j.setError(401, "Codigo error 1")
- # j.setError(402, "Codigo error 3",3)
+#  j.setError(402, "Codigo error 3",3)
   j.setResponse(j.dbFullRes("select date_format(now(), '%Y-%m-%d %H:%i:%s') union select 1 union select 2 union select 3", {"p2":"1"}))
 
